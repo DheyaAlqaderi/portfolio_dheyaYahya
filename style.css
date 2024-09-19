@@ -49,7 +49,8 @@ header{
     transform: scale(1.1);
 }
 
-nav a{
+/* Default nav link styles */
+nav a {
     font-size: 1.8rem;
     color: white;
     margin-left: 4rem;
@@ -59,41 +60,76 @@ nav a{
 }
 
 nav a:hover,
-nav a.active{
+nav a.active {
     color: #b74b4b;
     border-bottom: 3px solid #b74b4b;
 }
 
-@media(max-width:995px){
-    nav{
+/* Mobile-specific styles */
+@media (max-width: 995px) {
+
+    /* Initially hide the nav off-screen */
+    nav {
         position: absolute;
-        display: none;
         top: 0;
-        right: 0;
+        right: -100%;
+        /* Hide off-screen */
         width: 40%;
         border-left: 3px solid #b74b4b;
         border-bottom: 3px solid #b74b4b;
         border-bottom-left-radius: 2rem;
-        padding: 1rem solid;
+        padding: 1rem;
         background-color: #161616;
-        border-top: 0.1rem solid rgba(0,0,0,0.1);
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        /* Smooth slide transition */
     }
 
-    nav.active{
-        display: block;
+    /* When active, bring the nav into view */
+    nav.active {
+        right: 0;
     }
 
-    nav a{
+    nav a {
         display: block;
         font-size: 2rem;
         margin: 3rem 0;
     }
 
     nav a:hover,
-    nav a.active{
+    nav a.active {
         padding: 1rem;
         border-radius: 0.5rem;
         border-bottom: 0.5rem solid #b74b4b;
+    }
+
+    /* Hamburger button styles */
+    .nav-btn {
+        display: block;
+        background-color: transparent;
+        color: white;
+        font-size: 2.5rem;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1000;
+    }
+}
+
+/* Hide the button on larger screens */
+@media (min-width: 996px) {
+    .nav-btn {
+        display: none;
+    }
+
+    nav {
+        display: block;
+        position: static;
+        width: auto;
+        right: 0;
+        /* Ensure nav is visible on large screens */
     }
 }
 
@@ -267,4 +303,3 @@ span{
         margin-top: 4rem;
     }
 }
-
